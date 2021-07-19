@@ -22,7 +22,7 @@ FROM vyaparalavadevi_schema.metal_types mt
 WHERE mt.metal_type="GLD-24k"
 )
 SELECT twbm.date, twbm.business_man_name
-ROUND(ROUND(mt.metal_purity_percentage/100, 3) * twbm.metal_weight * 5000, 2) AS rupees 
+twbm.metal_weight AS rupees 
 FROM vyaparalavadevi_schema.transactions_with_business_men twbm, mt
 WHERE twbm.date=CURRENT_DATE() AND twbm.transaction_type="T";
 
@@ -51,7 +51,7 @@ FROM vyaparalavadevi_schema.metal_types mt
 WHERE mt.metal_type="GLD-24k"
 )
 SELECT twbm.date, twbm.business_man_name,
-ROUND(ROUND(mt.metal_purity_percentage/100, 3) * twbm.metal_weight * 5000, 2) AS rupees 
+twbm.metal_weight AS rupees 
 FROM vyaparalavadevi_schema.transactions_with_business_men twbm, mt
 WHERE twbm.date=CURRENT_DATE() AND twbm.transaction_type="G";
 
